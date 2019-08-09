@@ -1,4 +1,7 @@
-https://github.com/slycooper50/SlyAbbas/blob/master/MathematicalAnimations/Welcome/Welcome.gif
+<p align="center">
+<img src= "https://github.com/slycooper50/SlyAbbas/blob/master/MathematicalAnimations/Welcome/Welcome.gif" height="350" width="500">
+</p>
+
 # Mathematical Animations
 
 This folder of the repo contains mathematical animations using the manim package created by Grant Sanderson. This package is a python package. It generates big tex folder size of approx (30Gb).
