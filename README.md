@@ -1,4 +1,4 @@
-<img src="https://github.com/slycooper50/SlyAbbas/blob/master/logo/logo.jpg " height="350" width="500">
+<img src="https://github.com/slycooper50/SlyAbbas/blob/master/logo/logo.jpg " height="350" width="500" class="center">
 
 # SlyAbs Repository
 
