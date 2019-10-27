@@ -1,0 +1,38 @@
+from PIL import Image, ImageDraw
+import random
+import math
+
+def random_color():
+    return (round(255*random.random()),round(255*random.random()),round(255*random.random()))
+
+
+def my_circle(width, height):
+    img=Image.new('RGB',(width,height),(255,255,255))
+    draw=ImageDraw.Draw(img)
+    draw.ellipse((0,height/4,width/2,0.75*height),outline=(200,200,200),width=2)
+    return img
+
+    
+
+frames = []
+trail=[]
+rad=400/4
+for i in range(108):
+    new_frame = my_circle(400, 400)
+    draw_point=ImageDraw.Draw(new_frame)
+    points=(400/4+rad*math.cos(math.radians(i*10))-1,400/2+rad*math.sin(math.radians(i*10))-1,400/4+rad*math.cos(math.radians(i*10))+1,400/2+rad*math.sin(math.radians(i*10))+1)
+    #draw_point.point((400/4+rad*math.cos(math.radians(i*10)),400/2+rad*math.sin(math.radians(i*10))),fill=(0,0,0))
+    draw_point.ellipse(points,fill=(0,0,0))
+    frames.append(new_frame)
+    trail.append(points)
+    for i in range(len(trail)):
+        trail[i]=(trail[i][0]+20,trail[i][1],trail[i][2]+20,trail[i][3])
+    
+    for i in range(len(trail)):
+        draw_point.ellipse(trail[i],fill=(0,0,0))
+
+ 
+# Save into a GIF file that loops forever
+# frames[0].save('random_rects.png', format='PNG')
+frames[0].save('new.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1, loop=0)
+print('done')
