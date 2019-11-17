@@ -17,6 +17,6 @@ To do this I'll make horizontal line going to a vertical one standing to the rig
 
 # This is the next step in making the fourier animations
 
-![animation](https://github.com/slycooper50/SlyAbbas/blob/master/graphics_wrok/old_test.gif?raw=true)
+![animation](https://github.com/slycooper50/SlyAbbas/blob/master/graphics_wrok/new.gif?raw=true)
 
 This looks fairly clean. It's not very high resolution, but I think it looks good enough. Next step is to try adding more circles and to view the addition of those in a clean way as well. 
