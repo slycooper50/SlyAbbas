@@ -1,0 +1,53 @@
+from PIL import Image, ImageDraw
+import random
+import math
+import cv2
+
+def random_color():
+    return (round(255*random.random()),round(255*random.random()),round(255*random.random()))
+
+
+def my_circle(width, height):
+    img=Image.new('RGB',(width,height),(255,255,255))
+    draw=ImageDraw.Draw(img)
+    draw.ellipse((0,height/4,width/2,0.75*height),outline=(200,200,200),width=2)
+    return img
+
+    
+
+frames = []
+trail=[]
+rad=400/4
+for i in range(108):
+    new_frame = my_circle(400, 400)
+    draw_point=ImageDraw.Draw(new_frame)
+    draw_point.line([210,0,210,400],fill=(0,0,0),width=3)
+    #points=(400/4+rad*math.cos(math.radians(i*10))-1,400/2+rad*math.sin(math.radians(i*10))-1,400/4+rad*math.cos(math.radians(i*10))+1,400/2+rad*math.sin(math.radians(i*10))+1)
+    #draw_point.point((400/4+rad*math.cos(math.radians(i*10)),400/2+rad*math.sin(math.radians(i*10))),fill=(0,0,0))
+    point=(rad+rad*math.cos(math.radians(i*10)),2*rad+rad*math.sin(math.radians(i*10)))
+    #draw_point.ellipse(points,fill=(0,0,0))
+    draw_point.line([(point),(210,point[1])],fill=(0,0,0),width=3)
+    frames.append(new_frame)
+    newpoint=(210,point[1])
+    trail.append(newpoint)
+    for i in range(len(trail)-1):
+        trail[i]=(trail[i][0]+10,trail[i][1])
+    #draw_point.line(trail,fill=(0,0,0),width=3)
+    for i in range(len(trail)-1):
+    #     draw_point.ellipse(trail[i],fill=(0,0,0))
+        draw_point.line([trail[i],trail[i+1]],fill=(255,0,0),width=2)
+
+ 
+# Save into a GIF file that loops forever
+# frames[0].save('random_rects.png', format='PNG')
+frames[0].save('new.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1, loop=0)
+print('done')
+
+
+# fourcc=cv2.VideoWriter_fourcc(*'DIVX')
+# out=cv2.VideoWriter('circle.avi',0,1,(480,480))
+
+# for frame in frames:
+#     out.write(frame)
+# cv2.destroyAllWindows()
+# out.release()
